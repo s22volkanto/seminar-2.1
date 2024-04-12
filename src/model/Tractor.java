@@ -1,17 +1,19 @@
 package model;
 
 public class Tractor extends Vehicle{
+	//1. variables
 	private String additionalTechniques;
 	private boolean isOnlyLargeTires;
 	
+	//2. get and set
 	public String getAdditionalTechniques() {
 		return additionalTechniques;
 	}
 	public void setAdditionalTechniques(String additionalTechniques) {
-		if(additionalTechniques != null  && additionalTechniques.matches("[A-Za-z 0-9]{1,20}"))
+		if(additionalTechniques != null && additionalTechniques.matches("[A-Za-z0-9 .]+"))
 			this.additionalTechniques = additionalTechniques;
 		else
-			this.additionalTechniques = "Undefinied";
+			this.additionalTechniques = "-------";
 	}
 	public boolean isOnlyLargeTires() {
 		return isOnlyLargeTires;
@@ -19,20 +21,31 @@ public class Tractor extends Vehicle{
 	public void setOnlyLargeTires(boolean isOnlyLargeTires) {
 		this.isOnlyLargeTires = isOnlyLargeTires;
 	}
-	// Constructors
+	
+	
+	//3. constructors
 	public Tractor() {
 		super();
-		setAdditionalTechniques("Technique");
+		setAdditionalTechniques("Extra tires");
 		setOnlyLargeTires(false);
 	}
-	public Tractor(String title, float price, int quantity, Fuel fuel, String additionalTechniques, boolean isOnlyLargeTires) {
-		super(title, price, quantity, fuel);
+	
+	public Tractor(String title, float price, int quantity, 
+			Fuel type, String additionalTechniques, boolean isOnlyLargeTires)
+	{
+		super(title, price, quantity, type);
 		setAdditionalTechniques(additionalTechniques);
 		setOnlyLargeTires(isOnlyLargeTires);
 	}
-	// toString
+	
+	
+	//4. toSTring
 	public String toString()
 	{
-		return super.toString() + " additional techniques: " + getAdditionalTechniques() + " large tires: " + isOnlyLargeTires();
+		return super.toString() + " " + additionalTechniques + " " + isOnlyLargeTires;
 	}
+	
+	//5. other functions
+	
+
 }
